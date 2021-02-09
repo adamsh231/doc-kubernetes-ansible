@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: nginx-hello-rs
+  annotations:
+    description: Membuat pod dengan replication ReplicationSet
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - nginx-pod
+      - key: env
+        operator: In
+        values:
+          - development
+          - production
+  template:
+    metadata: 
+      name: nginx-pod
+      labels:
+        app: nginx-pod
+        env: development
+    spec:
+      containers:
+        - name: nginx-hello-container
+          image: nginxdemos/hello
+          ports:
+            - containerPort: 80
+
+    
