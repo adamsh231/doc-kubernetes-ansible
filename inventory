@@ -1,0 +1,6 @@
+[masters]
+master ansible_host=3.1.49.99 ansible_user=ec2-user ansible_ssh_private_key_file=k8s-servers.pem
+
+[workers]
+worker1 ansible_host=54.255.185.214 ansible_user=ec2-user ansible_ssh_private_key_file=k8s-servers.pem
+worker2 ansible_host=54.251.91.224 ansible_user=ec2-user ansible_ssh_private_key_file=k8s-servers.pem
