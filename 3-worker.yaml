@@ -12,7 +12,7 @@
 
 ## Manual!!
 
-- hosts: workers
+- hosts: all
   become: yes
   tasks:
     - name: join cluster
