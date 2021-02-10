@@ -22,10 +22,15 @@
         remote_src: yes
         owner: ec2-user
 
-    - name: install Pod network
+    - name: install Pod network - 1
       become: yes
       become_user: ec2-user
-      shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-legacy.yml
+      shell: export kubever=$(kubectl version | base64 | tr -d '\n')
+
+    - name: install Pod network - 2
+      become: yes
+      become_user: ec2-user
+      shell: kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/k8s-manifests/kube-flannel-legacy.yml >> pod_network_setup.txt
       args:
         chdir: $HOME
         creates: pod_network_setup.txt
