@@ -8,3 +8,5 @@ LINUX AMI - CENTOS
 4. run 3-workers.yaml
     - aws firewall off or inbound rule
     - masih join manual coba auto
+
+NB: [Warning] beware of Ansible cache
