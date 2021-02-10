@@ -58,7 +58,7 @@
         state: present
         allow_downgrade: yes
 
-- hosts: workers
+- hosts: all
   become: yes
   tasks:
    - name: enable docker
