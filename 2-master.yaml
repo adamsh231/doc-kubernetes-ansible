@@ -22,17 +22,17 @@
         remote_src: yes
         owner: ec2-user
 
-    # coba gabung shell
+    # coba gabung shell -> masih manual
 
-    - name: install Pod network - 1
-      become: yes
-      become_user: ec2-user
-      shell: export kubever=$(kubectl version | base64 | tr -d '\n')
+    # - name: install Pod network - 1
+    #   become: yes
+    #   become_user: ec2-user
+    #   shell: export kubever=$(kubectl version | base64 | tr -d '\n')
 
-    - name: install Pod network - 2
-      become: yes
-      become_user: ec2-user
-      shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever" >> pod_network_setup.txt
-      args:
-        chdir: $HOME
-        creates: pod_network_setup.txt
+    # - name: install Pod network - 2
+    #   become: yes
+    #   become_user: ec2-user
+    #   shell: kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever" >> pod_network_setup.txt
+    #   args:
+    #     chdir: $HOME
+    #     creates: pod_network_setup.txt
