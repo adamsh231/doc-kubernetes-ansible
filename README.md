@@ -1,3 +1,5 @@
+LINUX AMI - CENTOS
+
 1. Create Host File (create pem file from aws, chmod 400)
 2. run 1-dep.yaml 
 3. run 2-master.yaml -> change flannel
