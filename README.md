@@ -6,7 +6,7 @@ LINUX AMI - CENTOS
     - export kubever=$(kubectl version | base64 | tr -d '\n')
     - kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"
 4. run 3-workers.yaml
-    - aws firewall off or inbound rule
+    - aws firewall off or inbound rule, container creating problem
     - masih join manual coba auto
 
 NB: [Warning] beware of Ansible cache
