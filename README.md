@@ -14,8 +14,6 @@ NB: [Warning] beware of Ansible cache
 
 ---------------------------------------------------  HELM  ------------------------------------------------------------------------
 
-https://www.ayies.com/cara-install-helm-di-kubernetes-cluster/#:~:text=Helm%20adalah%20sebuah%20tool%20untuk,format%20pemaketan%20resource%2Dresource%20kubernetes.&text=Dengan%20bantuan%20Helm%20kita%20semakin,membangun%20software%20didalam%20cluster%20Kubernetes.
-
 https://www.youtube.com/watch?v=fy8SHvNZGeE&ab_channel=IBMCloud
 
 https://www.youtube.com/watch?v=-ykwb1d0DXU&ab_channel=TechWorldwithNana
