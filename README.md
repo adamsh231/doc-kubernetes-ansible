@@ -21,3 +21,5 @@ https://www.youtube.com/watch?v=fy8SHvNZGeE&ab_channel=IBMCloud
 https://www.youtube.com/watch?v=-ykwb1d0DXU&ab_channel=TechWorldwithNana
 
 https://www.baeldung.com/kubernetes-helm
+
+Helm issue - https://github.com/fnproject/fn-helm/issues/21
