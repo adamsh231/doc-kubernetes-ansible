@@ -39,6 +39,10 @@ Main
     - Run `watch kubectl get node` -> check worker node are joined and status is `Ready`. This will take a moment to change node state to `Ready`
 
 Nb: [Warning] beware of Ansible cache
+Nb: If Calling service with DNS doesnt work
+    - please check with ip address first -> if ip address work
+    - run `kubectl -n kube-system rollout restart deployment coredns` -> https://stackoverflow.com/questions/45805483/kubernetes-pods-cant-resolve-hostnames
+    - now check with DNS
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------
