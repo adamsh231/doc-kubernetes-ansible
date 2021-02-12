@@ -30,20 +30,21 @@ Main
     - Run `export kubever=$(kubectl version | base64 | tr -d '\n')`
     - Run `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"`
     ----------------------------------------------------------------------------------------------------------------
-                                for just one command you can use below command
+                                for simpying command, you can use command below
     ----------------------------------------------------------------------------------------------------------------
     - Run `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
     -------------------------------------------------------------------------------------------------------------------------------------------
     - Run `watch kubectl get node` -> check node status is `Ready`. This will take a moment to change node state to `Ready`
 4. Run `ansible-playbook -i inventory 3-workers.yaml`
     - Run `watch kubectl get node` -> check worker node are joined and status is `Ready`. This will take a moment to change node state to `Ready`
-    
+
 Nb: [Warning] beware of Ansible cache
 
-Add Ons
-1. Installing Helm for Kubernetes Deployment Convinient
 
----------------------------------------------------  HELM  ------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------
+Add Ons
+1. Installing `Helm` for Kubernetes Deployment Convinient
+-------------------------------------------------------------------------------------------------------------------------------------------
 
 https://www.youtube.com/watch?v=fy8SHvNZGeE&ab_channel=IBMCloud
 
