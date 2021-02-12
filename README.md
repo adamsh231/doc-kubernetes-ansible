@@ -30,7 +30,7 @@ Main
     - Run `export kubever=$(kubectl version | base64 | tr -d '\n')`
     - Run `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"`
     ----------------------------------------------------------------------------------------------------------------
-                                for simpying command, you can use command below
+                                            or you can just simplying run
     ----------------------------------------------------------------------------------------------------------------
     - Run `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
     -------------------------------------------------------------------------------------------------------------------------------------------
