@@ -26,8 +26,7 @@ Main
 3. Run `ansible-playbook -i inventory 2-master.yaml`
     - Run `kubectl get node` -> check if node is existing but status is `NotReady`
     -------------------------------------------------------------------------------------------------------------------------------------------
-    This case using `cloud-weave-works` add ons for kubernetes and port should be configured in Security Group as shown above (6783-6784)
-    ---
+    -- Note: This case using `cloud-weave-works` add ons for kubernetes and port should be configured in Security Group as shown above (6783-6784) --
     - Run `export kubever=$(kubectl version | base64 | tr -d '\n')`
     - Run `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"`
     ----------------------------------------------------------------------------------------------------------------
