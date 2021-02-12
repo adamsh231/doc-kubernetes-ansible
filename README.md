@@ -14,7 +14,7 @@ NB: [Warning] beware of Ansible cache
 --------------------------------------------------- Security Group AWS -----------------------------------------------------------
 https://www.cloudiqtech.com/creating-aws-security-groups-for-kubernetes/
 
--https://stackoverflow.com/questions/62110917/pods-are-remain-containercreating-networkplugin-cni-failed-to-set-up-pod-netplu
+-https://stackoverflow.com/questions/62110917/pods-are-remain-containercreating-networkplugin-cni-failed-to-set-up-pod-netplu (6783 and 6784 for weave network)
 
 
 ---------------------------------------------------  HELM  ------------------------------------------------------------------------
