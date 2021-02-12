@@ -29,9 +29,9 @@ Main
     Nb: this case using `cloud-weave-works` add ons for kubernetes and port should be configured in Security Group as shown above (6783-6784)
     - Run `export kubever=$(kubectl version | base64 | tr -d '\n')`
     - Run `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"`
-    --------------------------------------------------------
-                                OR
-    --------------------------------------------------------
+    ----------------------------------------------------------------------------------------------------------------
+                                for just one command you can use below command
+    ----------------------------------------------------------------------------------------------------------------
     - Run `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
     -------------------------------------------------------------------------------------------------------------------------------------------
     - Run `watch kubectl get node` -> check node status is `Ready`. This will take a moment to change node state to `Ready`
