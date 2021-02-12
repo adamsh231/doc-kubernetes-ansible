@@ -11,6 +11,9 @@ LINUX AMI - CENTOS
 
 NB: [Warning] beware of Ansible cache
 
+--------------------------------------------------- Security Group AWS -----------------------------------------------------------
+https://www.cloudiqtech.com/creating-aws-security-groups-for-kubernetes/
+
 
 ---------------------------------------------------  HELM  ------------------------------------------------------------------------
 
