@@ -16,6 +16,7 @@ Pre-Requisite
     - type: Custom TCP, port: 10255, from: anywhere, description: Read only kubelet API
     - type: Custom TCP, port: 6783-6784, from: anywhere, description: Weave net port add on, Before installing Weave Net, you should make sure the following ports are not blocked by your firewall: TCP 6783 and UDP 6783/6784 https://www.weave.works/docs/net/latest/kubernetes/kube-addon/
     - type: Custom TCP, port: 30000-32767, from: anywhere `or your customized ip address`, description: for external applications. However, it is more likely that you will expose external applications to outside the cluster via load balancers, and restrict access to these ports to within your vpc
+    - type: Custom TCP & UDP, port: 7946 , from: anywhere, description: MetalLB -> https://metallb.universe.tf/
 
 Main
 1. SSH into your master instance or node
@@ -24,18 +25,7 @@ Main
     - run `sudo chmod 400 {your .pem file path}`
 2. Run `ansible-playbook -i inventory 1-dep.yaml`
 3. Run `ansible-playbook -i inventory 2-master.yaml`
-    - Run `kubectl get node` -> check if node is existing but status is `NotReady`
-    -------------------------------------------------------------------------------------------------------------------------------------------
-    - Note: This case using `cloud-weave-works` add ons for kubernetes and port should be configured in Security Group as shown above (6783-6784)
-    
-    - Run `export kubever=$(kubectl version | base64 | tr -d '\n')`
-    - Run `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$kubever"`
-    ----------------------------------------------------------------------------------------------------------------
-                                            or you can just simplying run
-    ----------------------------------------------------------------------------------------------------------------
-    - Run `kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"`
-    -------------------------------------------------------------------------------------------------------------------------------------------
-    - Run `watch kubectl get node` -> check node status is `Ready`. This will take a moment to change node state to `Ready`
+    - Run `watch kubectl get node` -> check if node is existing but status is `NotReady` this will take a moment to `Ready` state
 4. Run `ansible-playbook -i inventory 3-workers.yaml`
     - Run `watch kubectl get node` -> check worker node are joined and status is `Ready`. This will take a moment to change node state to `Ready`
 
