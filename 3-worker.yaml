@@ -10,8 +10,6 @@
       set_fact:
         join_command: "{{ join_command_raw.stdout_lines[0] }}"
 
-## Manual!!
-
 - hosts: workers
   become: yes
   tasks:
