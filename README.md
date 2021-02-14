@@ -40,6 +40,7 @@ Main
 Add Ons
 1. Installing `Helm` for Kubernetes Deployment Convinient
 2. Installing `tree`
+3. Installing `k9s` with `homebrew`
 -------------------------------------------------------------------------------------------------------------------------------------------
 
 https://www.youtube.com/watch?v=fy8SHvNZGeE&ab_channel=IBMCloud
