@@ -20,10 +20,11 @@ Pre-Requisite
     - type: Custom TCP & UDP, port: 7946 , from: anywhere, description: MetalLB -> https://metallb.universe.tf/
 
 Main
-1. SSH into your master instance or node
+i. SSH into your master instance or node
+ii. Run `git clone https://github.com/adamsh231/kubernetes-aws-ansible`
 1. Edit the Inventory file corresponding for master and workers ip on your VPS (ec2 - aws)
     - Add .pem file for in same parent folder to inventory
-    - run `sudo chmod 400 {your .pem file path}`
+    - Run `sudo chmod 400 {your .pem file path}`
 2. Run `ansible-playbook -i inventory 1-dep.yaml`
 3. Run `ansible-playbook -i inventory 2-master.yaml`
     - Run `watch kubectl get node` -> check if node is existing but status is `NotReady` this will take a moment to `Ready` state
@@ -33,8 +34,7 @@ Main
 - Nb: [Warning] beware of Ansible cache
 - Nb: If Calling service with DNS doesnt work
     - please check with ip address first -> if ip address work
-    - run `kubectl -n kube-system rollout restart deployment coredns` -> https://stackoverflow.com/questions/45805483/kubernetes-pods-cant-resolve-hostnames
-    - now check with DNS
+    - run `kubectl -n kube-system rollout restart deployment coredns` -> https://stackoverflow.com/questions/45805483/kubernetes-pods-cant-resolve-hostnames, then check with DNS
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------
