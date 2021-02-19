@@ -1,0 +1,172 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: development
+
+---
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: nginx-rs
+  namespace: development
+  annotations:
+    description: Membuat pod dengan replication ReplicationSet
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - nginx-pod
+      - key: env
+        operator: In
+        values:
+          - development
+          - staging
+  template:
+    metadata: 
+      name: nginx-pod
+      labels:
+        app: nginx-pod
+        env: development
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginxdemos/hello
+          ports:
+            - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-nginx
+  namespace: development
+spec:
+  type: NodePort
+  selector:
+    app: nginx-pod
+  ports:
+  - port: 80
+    targetPort: 80
+
+---
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: 2048-rs
+  namespace: development
+  annotations:
+    description: Membuat pod dengan replication ReplicationSet
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - 2048-pod
+      - key: env
+        operator: In
+        values:
+          - development
+          - staging
+  template:
+    metadata: 
+      name: 2048-pod
+      labels:
+        app: 2048-pod
+        env: development
+    spec:
+      containers:
+        - name: 2048-container
+          image: alexwhen/docker-2048
+          ports:
+            - containerPort: 80
+            
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-2048
+  namespace: development
+spec:
+  type: NodePort
+  selector:
+    app: 2048-pod
+  ports:
+  - port: 80
+    targetPort: 80
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: curl-pod
+  namespace: development
+  labels:
+    app: nginx-curl
+    env: development
+spec:
+  containers:
+    - name: nginx-curl-container
+      image: ewoutp/docker-nginx-curl
+      ports:
+        - containerPort: 80  
+
+---
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata: 
+  name: php-rs
+  namespace: development
+  annotations:
+    description: Membuat pod dengan replication ReplicationSet
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - php-pod
+      - key: env
+        operator: In
+        values:
+          - development
+          - staging
+  template:
+    metadata: 
+      name: php-pod
+      labels:
+        app: php-pod
+        env: development
+    spec:
+      containers:
+        - name: php-container
+          image: bbenns/php-hello-world
+          ports:
+            - containerPort: 80
+            
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-php
+  namespace: development
+spec:
+  type: NodePort
+  selector:
+    app: php-pod
+  ports:
+  - port: 80
+    targetPort: 80
+ 
