@@ -65,10 +65,3 @@ spec:
             name: service-nginx
             port:
               number: 80
-      - path: /php
-        pathType: Prefix
-        backend:
-          service:
-            name: service-nginx
-            port:
-              number: 80
