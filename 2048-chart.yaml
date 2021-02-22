@@ -93,6 +93,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:ap-southeast-1:770964819483:certificate/1233e25e-d638-4385-bb0a-dfaf4a63ef2c
     # external-dns.alpha.kubernetes.io/hostname: >
     #   game.shoesmart-research.com,
     #   products.shoesmart-research.com
