@@ -11,21 +11,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   namespace: ns-2048
-  name: deployment-nginx
+  name: deployment-2048
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: nginx-pod
+      app.kubernetes.io/name: 2048-pod
   replicas: 3
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: nginx-pod
+        app.kubernetes.io/name: 2048-pod
     spec:
       containers:
       - image: alexwhen/docker-2048
         imagePullPolicy: Always
-        name: nginx-pod
+        name: 2048-pod
         ports:
         - containerPort: 80
 
@@ -35,14 +35,53 @@ apiVersion: v1
 kind: Service
 metadata:
   namespace: ns-2048
-  name: service-nginx
+  name: service-2048
 spec:
   ports:
     - port: 80
       targetPort: 80
   type: NodePort
   selector:
-    app.kubernetes.io/name: nginx-pod
+    app.kubernetes.io/name: 2048-pod
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: ns-2048
+  name: deployment-php
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: php-pod
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: php-pod
+    spec:
+      containers:
+      - image: bbenns/php-hello-world
+        imagePullPolicy: Always
+        name: php-pod
+        ports:
+        - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: ns-2048
+  name: service-php
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+  type: NodePort
+  selector:
+    app.kubernetes.io/name: php-pod
 
 ---
 
@@ -50,11 +89,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: ns-2048
-  name: ingress-nginx
+  name: ingress-testing
   annotations:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
-    external-dns.alpha.kubernetes.io/hostname: game.shoesmart-research.com, products.shoesmart-research.com
+    # external-dns.alpha.kubernetes.io/hostname: >
+    #   game.shoesmart-research.com,
+    #   products.shoesmart-research.com
 spec:
   rules:
   - host: game.shoesmart-research.com
@@ -64,7 +105,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: service-nginx
+            name: service-2048
             port:
               number: 80
   - host: products.shoesmart-research.com
@@ -74,6 +115,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: service-nginx
+            name: service-php
             port:
               number: 80
